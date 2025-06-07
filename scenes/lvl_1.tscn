@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=4 uid="uid://d3ywdqa4hi6vs"]
+[gd_scene load_steps=10 format=4 uid="uid://d3ywdqa4hi6vs"]
 
 [ext_resource type="Texture2D" uid="uid://yiwr5who40tq" path="res://icon.svg" id="1_wgevm"]
+[ext_resource type="PackedScene" uid="uid://j7a0fbbu1qxx" path="res://scene/player/player.tscn" id="2_yx8eg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wgevm"]
 texture = ExtResource("1_wgevm")
@@ -144,14 +145,6 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_l8iau"]
 gradient = SubResource("Gradient_yx8eg")
 
-[sub_resource type="Gradient" id="Gradient_l8iau"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_hwdor"]
-gradient = SubResource("Gradient_l8iau")
-fill = 1
-fill_from = Vector2(0.5, 0.440367)
-
 [node name="lvl1" type="Node2D"]
 
 [node name="floar" type="TileMapLayer" parent="."]
@@ -165,10 +158,14 @@ tile_set = SubResource("TileSet_l8iau")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1888, 816)
 scale = Vector2(67, 35.5)
+energy = 0.9
 blend_mode = 1
 texture = SubResource("GradientTexture2D_l8iau")
 
-[node name="PointLight2D2" type="PointLight2D" parent="."]
-position = Vector2(384, 192)
-scale = Vector2(8, 6)
-texture = SubResource("GradientTexture2D_hwdor")
+[node name="Player" parent="." instance=ExtResource("2_yx8eg")]
+position = Vector2(128, 128)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "https://vk.com/@game_constructors-godot-4-praktika-graficheskii-kluch"
