@@ -1,6 +1,48 @@
-[gd_scene load_steps=2 format=3 uid="uid://wgj2ym4vchpd"]
+[gd_scene load_steps=5 format=3 uid="uid://wgj2ym4vchpd"]
 
 [ext_resource type="Script" uid="uid://b4ebiyk75r2uw" path="res://scene/lock.gd" id="1_ssusn"]
 
+[sub_resource type="Animation" id="Animation_ssusn"]
+resource_name = "ready"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.48, 0.566667, 0.666667),
+"transitions": PackedFloat32Array(3.03143, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3ihv3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xy16n"]
+_data = {
+&"RESET": SubResource("Animation_3ihv3"),
+&"ready": SubResource("Animation_ssusn")
+}
+
 [node name="lock" type="Node2D"]
+scale = Vector2(1e-05, 1e-05)
 script = ExtResource("1_ssusn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xy16n")
+}

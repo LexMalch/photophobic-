@@ -9,10 +9,11 @@ var line = Line2D
 var mouse_pressed = false
 
 func _ready():
+	$AnimationPlayer.play("ready")
 	for a in range(9):
 		var dots = preload("res://scene/dot.tscn").instantiate()
 		add_child(dots)
-		dots.position = Vector2(200+(a%3*100),200+((a-a%3)*33))
+		dots.position = Vector2(-100+(a%3*100),(-100+(a-a%3)*33))
 		dots.id = a
 
 func _process(delta):
