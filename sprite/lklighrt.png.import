@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdh5eksi0walh"
-path="res://.godot/imported/foni-papik-pro-sk11-p-kartinki-konus-na-prozrachnom-fone-13.png-a47b79c937e850aaa25109ba091d8cff.ctex"
+uid="uid://bcrmwavrdvc16"
+path="res://.godot/imported/lklighrt.png-410b6b650439d642fc5a7644b4dbef25.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/foni-papik-pro-sk11-p-kartinki-konus-na-prozrachnom-fone-13.png"
-dest_files=["res://.godot/imported/foni-papik-pro-sk11-p-kartinki-konus-na-prozrachnom-fone-13.png-a47b79c937e850aaa25109ba091d8cff.ctex"]
+source_file="res://sprite/lklighrt.png"
+dest_files=["res://.godot/imported/lklighrt.png-410b6b650439d642fc5a7644b4dbef25.ctex"]
 
 [params]
 
