@@ -44,9 +44,11 @@ _data = {
 }
 
 [node name="Dot" type="Node2D"]
+scale = Vector2(0.3, 0.3)
 script = ExtResource("1_1q72b")
 
 [node name="DotSprite" type="Sprite2D" parent="."]
+modulate = Color(2.31028e-06, 0.70171, 0.702417, 1)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_5rhfo")
 
@@ -62,6 +64,8 @@ libraries = {
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
-offset_bottom = 23.0
+offset_bottom = 49.0
+theme_override_font_sizes/font_size = 80
+text = "0"
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
