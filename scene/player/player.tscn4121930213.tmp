@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dva87eg2b6g15" path="res://scene/player/player.gd" id="1_cm2cf"]
 [ext_resource type="Texture2D" uid="uid://yiwr5who40tq" path="res://icon.svg" id="1_v7pse"]
-[ext_resource type="Texture2D" uid="uid://1k72bvxx75lf" path="res://sprite/1.png" id="2_6smn3"]
+[ext_resource type="Texture2D" uid="uid://bcrmwavrdvc16" path="res://sprite/lklighrt.png" id="3_6smn3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cm2cf"]
 animations = [{
@@ -19,12 +19,10 @@ animations = [{
 script = ExtResource("1_cm2cf")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(10, -1)
-rotation = -1.5708
-energy = 0.5
+position = Vector2(4, 6)
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
-texture = ExtResource("2_6smn3")
+texture = ExtResource("3_6smn3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
@@ -32,8 +30,3 @@ texture = ExtResource("2_6smn3")
 sprite_frames = SubResource("SpriteFrames_cm2cf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="frenzy_time" type="Timer" parent="."]
-wait_time = 120.0
-
-[connection signal="timeout" from="frenzy_time" to="." method="_on_frenzy_time_timeout"]
