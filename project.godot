@@ -11,7 +11,9 @@ config_version=5
 [application]
 
 config/name="Photophobic"
-run/main_scene="uid://dbmyi31sdwjri"
+
+run/main_scene="uid://d3ywdqa4hi6vs"
+
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
