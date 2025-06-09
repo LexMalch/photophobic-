@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://buptwckyi4fm7"]
+[gd_scene load_steps=6 format=3 uid="uid://buptwckyi4fm7"]
 
 [ext_resource type="Script" uid="uid://b4ebiyk75r2uw" path="res://scene/lock/lock.gd" id="1_ssusn"]
+[ext_resource type="Texture2D" uid="uid://yiwr5who40tq" path="res://icon.svg" id="2_6s3mc"]
 
 [sub_resource type="Animation" id="Animation_3ihv3"]
 length = 0.001
@@ -29,7 +30,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.48, 0.566667, 0.666667),
 "transitions": PackedFloat32Array(3.03143, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+"values": [Vector2(1e-05, 1e-05), Vector2(0.5, 0.5), Vector2(0.55, 0.55), Vector2(0.5, 0.5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xy16n"]
@@ -46,3 +47,8 @@ script = ExtResource("1_ssusn")
 libraries = {
 &"": SubResource("AnimationLibrary_xy16n")
 }
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(2, 2)
+texture = ExtResource("2_6s3mc")

@@ -19,10 +19,12 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_5lop3"]
 radius = 25.0799
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+disable_mode = 2
 script = ExtResource("1_cm2cf")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 position = Vector2(10, -1)
 rotation = -1.5708
 energy = 0.5
@@ -31,17 +33,18 @@ shadow_color = Color(0, 0, 0, 1)
 texture = ExtResource("2_6smn3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.333366, 0.309132)
 sprite_frames = SubResource("SpriteFrames_cm2cf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5lop3")
 debug_color = Color(0.846102, 0.326707, 0.496082, 0.42)
 
-[node name="frenzy_time" type="Timer" parent="."]
+[node name="frenzy_time" type="Timer" parent="." groups=["player"]]
 wait_time = 10.0
-autostart = true
 script = ExtResource("4_5lop3")
 
 [connection signal="timeout" from="frenzy_time" to="frenzy_time" method="_on_timeout"]

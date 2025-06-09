@@ -11,12 +11,12 @@ var mouse_pressed = false
 func _ready():
 	$AnimationPlayer.play("ready")
 	for a in range(9):
-		var dots = preload("res://scene/dot.tscn").instantiate()
+		var dots = preload("res://scene/lock/dot.tscn").instantiate()
 		add_child(dots)
 		dots.position = Vector2(-100+(a%3*100),(-100+(a-a%3)*33))
 		dots.id = a
 
-func _process(delta):
+func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("mb"):  # одиночный клик
 		curcode.append(firstId)
 		over.append(firstPoint)
@@ -25,17 +25,15 @@ func _process(delta):
 		add_child(line)
 		line.points = over
 		
-	if Input.is_action_pressed("mb"):  # нажатие кнопки
+	if Input.is_action_pressed("mb"):  # нажатие кнопкиds
 		mouse_pressed = true
 		line.points = over
-		line.set_point_position(over.size()-1,get_global_mouse_position())
+		line.set_point_position(over.size()-1,get_local_mouse_position())
 		
 	if Input.is_action_just_released("mb"):  # отпускание кнопки
-		print(curcode,needcode)
 		if curcode == needcode:
+			get_parent().right_password()
 			queue_free()
-		else:
-			print("loh")
 		mouse_pressed = false
 		over = []
 		curcode = []
