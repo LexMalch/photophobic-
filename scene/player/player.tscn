@@ -85,21 +85,26 @@ radius = 7.0
 disable_mode = 2
 script = ExtResource("1_cm2cf")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(10, -1)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 0
+z_index = 1
+z_as_relative = false
+sprite_frames = SubResource("SpriteFrames_cm2cf")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Flashlight" type="Node2D" parent="."]
+position = Vector2(0, 10)
+
+[node name="PointLight2D" type="PointLight2D" parent="Flashlight"]
+rotation = -1.57079
 energy = 0.5
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 texture = ExtResource("2_6smn3")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_cm2cf")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.125534
+offset = Vector2(1, 11)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 10)
