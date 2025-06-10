@@ -16,7 +16,7 @@ script = ExtResource("1_6vuhr")
 [node name="lvl1" parent="." instance=ExtResource("1_0imob")]
 
 [node name="Player" parent="." instance=ExtResource("2_6vuhr")]
-position = Vector2(117, 124)
+position = Vector2(88, 32)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1888, 816)
