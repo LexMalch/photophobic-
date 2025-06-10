@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3aw883545i6c"]
+[gd_scene load_steps=5 format=3 uid="uid://b3aw883545i6c"]
 
+[ext_resource type="Script" uid="uid://dv7nuti4e5b7j" path="res://scene/enemy/enemy.gd" id="1_nytjq"]
 [ext_resource type="Texture2D" uid="uid://cp1kl626pwh17" path="res://sprite/Sprite-0001.png" id="1_yijav"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nytjq"]
@@ -11,6 +12,8 @@ radius = 249.018
 
 [node name="Enemy" type="Area2D"]
 modulate = Color(1, 1, 1, 0.231373)
+monitorable = false
+script = ExtResource("1_nytjq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_yijav")
@@ -24,3 +27,5 @@ shape = SubResource("CapsuleShape2D_nytjq")
 shape = SubResource("CircleShape2D_msiye")
 
 [node name="WallsDetector" type="RayCast2D" parent="."]
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
