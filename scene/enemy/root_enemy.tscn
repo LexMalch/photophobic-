@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwjxgwknceu8e"]
+[gd_scene load_steps=6 format=3 uid="uid://cwjxgwknceu8e"]
 
 [ext_resource type="Script" uid="uid://dak2kgyftr0v1" path="res://scene/enemy/root_enemy.gd" id="1_aiha7"]
 [ext_resource type="Texture2D" uid="uid://cv5vib0v5e14j" path="res://scene/player/sprite/player1.png" id="2_kol4j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kol4j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4460q"]
+radius = 75.0067
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eicjn"]
 radius = 14.0
@@ -19,6 +22,8 @@ shape = SubResource("CircleShape2D_kol4j")
 [node name="seek_area" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="seek_area"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_4460q")
 
 [node name="seek_timer" type="Timer" parent="."]
 wait_time = 2.0
@@ -28,6 +33,7 @@ autostart = true
 texture = ExtResource("2_kol4j")
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, 4)
@@ -39,8 +45,12 @@ debug_color = Color(0.299725, 0.620002, 0.299821, 0.42)
 wait_time = 0.5
 one_shot = true
 
+[node name="Chase_timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
 [connection signal="body_entered" from="seek_area" to="." method="_on_seek_area_body_entered"]
 [connection signal="body_exited" from="seek_area" to="." method="_on_seek_area_body_exited"]
 [connection signal="timeout" from="seek_timer" to="." method="_on_seek_timer_timeout"]
-[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="timeout" from="Chase_timer" to="." method="_on_chase_timer_timeout"]

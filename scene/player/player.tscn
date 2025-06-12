@@ -86,6 +86,7 @@ radius = 7.07107
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 disable_mode = 2
+collision_mask = 3
 script = ExtResource("1_cm2cf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
