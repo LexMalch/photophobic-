@@ -7,17 +7,19 @@ func _ready() -> void:
 	shakes_total = randf_range(3,6)
 	original_position = $CanvasLayer/Sprite2D.position
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if shakes< shakes_total:
-		$CanvasLayer.visible = true
-		$AnimationPlayer.play("on_player")
-		$CanvasLayer/Button.disabled = false
+	if body.is_in_group("player"):
+		if shakes< shakes_total:
+			$CanvasLayer.visible = true
+			$AnimationPlayer.play("on_player")
+			$CanvasLayer/Button.disabled = false
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	$AnimationPlayer.play_backwards("on_player")
-	await  get_tree().create_timer(0.5).timeout
-	$CanvasLayer.visible = false
-	$CanvasLayer/Button.disabled = true
+	if body.is_in_group("player"):
+		$AnimationPlayer.play_backwards("on_player")
+		await  get_tree().create_timer(0.5).timeout
+		$CanvasLayer.visible = false
+		$CanvasLayer/Button.disabled = true
 
 
 

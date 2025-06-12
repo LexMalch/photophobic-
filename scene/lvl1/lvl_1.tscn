@@ -223,4 +223,4 @@ tile_map_data = PackedByteArray("AAAAAP7/AAAFAAcAAAAAAP//AAAFAAcAAAABAP7/AAAFAAc
 tile_set = SubResource("TileSet_bsr16")
 
 [node name="SearchComponent" parent="." instance=ExtResource("6_rnyn8")]
-position = Vector2(416, 64)
+position = Vector2(256, 0)
