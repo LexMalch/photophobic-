@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://10xggdx3yxx0"]
+[gd_scene load_steps=38 format=4 uid="uid://10xggdx3yxx0"]
 
 [ext_resource type="Script" uid="uid://2hvj7bphytfx" path="res://scene/lvl1/lvl_1.gd" id="1_jschv"]
 [ext_resource type="Texture2D" uid="uid://bwo48by2146e7" path="res://sprite/floor.png" id="2_ieeyk"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://4hpalruddl6l" path="res://scene/exit/exit.tscn" id="4_ieeyk"]
 [ext_resource type="PackedScene" uid="uid://b3aw883545i6c" path="res://scene/enemy/enemy.tscn" id="5_seri6"]
 [ext_resource type="PackedScene" uid="uid://cwjxgwknceu8e" path="res://scene/enemy/root_enemy.tscn" id="6_rnyn8"]
+[ext_resource type="PackedScene" uid="uid://w45x6d6iuh6k" path="res://scene/Search/search_component.tscn" id="7_omujd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_seri6"]
 texture = ExtResource("2_ieeyk")
@@ -224,3 +225,6 @@ tile_set = SubResource("TileSet_bsr16")
 
 [node name="root_enemy" parent="." instance=ExtResource("6_rnyn8")]
 position = Vector2(395, 109)
+
+[node name="SearchComponent" parent="." instance=ExtResource("7_omujd")]
+position = Vector2(256, 0)
