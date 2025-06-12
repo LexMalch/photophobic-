@@ -1,0 +1,122 @@
+[gd_scene load_steps=20 format=3 uid="uid://w45x6d6iuh6k"]
+
+[ext_resource type="Script" uid="uid://dq33ttqmpfk4w" path="res://scene/Search/search_component.gd" id="1_ifklm"]
+[ext_resource type="Texture2D" uid="uid://djspg40giko08" path="res://sprite/shaf.png" id="2_ifklm"]
+[ext_resource type="Shader" uid="uid://d36s2m063aw42" path="res://scene/Search/search_component.gdshader" id="4_u7uca"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fwhq4"]
+radius = 32.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cj724"]
+shader = ExtResource("4_u7uca")
+shader_parameter/blur_strength = 0.3
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fwhq4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ifklm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u7uca"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cj724"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_llfch"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_emx65"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0keid"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gbqee"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j3rsm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xep3r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vftet"]
+
+[sub_resource type="Animation" id="Animation_u7uca"]
+resource_name = "on_player"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.41, 0.48),
+"transitions": PackedFloat32Array(1.68179, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(4, 4), Vector2(4.4, 4.4), Vector2(4, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_cj724"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_llfch"]
+_data = {
+&"RESET": SubResource("Animation_cj724"),
+&"on_player": SubResource("Animation_u7uca")
+}
+
+[node name="SearchComponent" type="Node2D"]
+script = ExtResource("1_ifklm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ifklm")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_fwhq4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_cj724")
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(308, 180)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("2_ifklm")
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 244.0
+offset_top = 116.0
+offset_right = 372.0
+offset_bottom = 244.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fwhq4")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_ifklm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_u7uca")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_cj724")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_llfch")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_emx65")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0keid")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_gbqee")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_j3rsm")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_xep3r")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vftet")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_llfch")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Sprite2D" method="_on_button_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
