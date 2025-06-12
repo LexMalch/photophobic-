@@ -9,6 +9,7 @@
 radius = 14.0
 
 [node name="root_enemy" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_aiha7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -34,6 +35,12 @@ scale = Vector2(0.694554, 1.27838)
 shape = SubResource("CircleShape2D_eicjn")
 debug_color = Color(0.299725, 0.620002, 0.299821, 0.42)
 
+[node name="Invin" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="body_entered" from="seek_area" to="." method="_on_seek_area_body_entered"]
 [connection signal="body_exited" from="seek_area" to="." method="_on_seek_area_body_exited"]
 [connection signal="timeout" from="seek_timer" to="." method="_on_seek_timer_timeout"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
