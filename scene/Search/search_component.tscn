@@ -1,8 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://w45x6d6iuh6k"]
+[gd_scene load_steps=20 format=3 uid="uid://w45x6d6iuh6k"]
 
 [ext_resource type="Texture2D" uid="uid://yiwr5who40tq" path="res://icon.svg" id="1_84ksi"]
 [ext_resource type="Script" uid="uid://dq33ttqmpfk4w" path="res://scene/Search/search_component.gd" id="1_ifklm"]
-[ext_resource type="Script" uid="uid://fsowjx8hw8v7" path="res://scene/Search/sprite_2d.gd" id="2_fwhq4"]
 [ext_resource type="Shader" uid="uid://d36s2m063aw42" path="res://scene/Search/search_component.gdshader" id="4_u7uca"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fwhq4"]
@@ -94,7 +93,6 @@ offset_bottom = 360.0
 position = Vector2(308, 180)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("1_84ksi")
-script = ExtResource("2_fwhq4")
 
 [node name="Button" type="Button" parent="CanvasLayer"]
 offset_left = 244.0
@@ -120,5 +118,6 @@ libraries = {
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Sprite2D" method="_on_button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
