@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://j7a0fbbu1qxx"]
+[gd_scene load_steps=17 format=3 uid="uid://j7a0fbbu1qxx"]
 
 [ext_resource type="Script" uid="uid://dva87eg2b6g15" path="res://scene/player/player.gd" id="1_cm2cf"]
 [ext_resource type="Texture2D" uid="uid://1k72bvxx75lf" path="res://sprite/1.png" id="2_6smn3"]
@@ -81,6 +81,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_5lop3"]
 radius = 7.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ajqqa"]
+radius = 7.07107
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 disable_mode = 2
 script = ExtResource("1_cm2cf")
@@ -112,5 +115,11 @@ debug_color = Color(0.846102, 0.326707, 0.496082, 0.42)
 [node name="frenzy_time" type="Timer" parent="." groups=["player"]]
 wait_time = 10.0
 script = ExtResource("4_5lop3")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_ajqqa")
 
 [connection signal="timeout" from="frenzy_time" to="frenzy_time" method="_on_timeout"]
