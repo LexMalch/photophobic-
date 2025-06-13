@@ -44,12 +44,12 @@ func start_shake():
 		is_shaking = false
 		$CanvasLayer/Button.disabled = false
 	if shakes >= shakes_total:
+		pick_up_item()
 		$CanvasLayer/Button.disabled = true
 		$AnimationPlayer.play_backwards("on_player")
 		await  get_tree().create_timer(0.5).timeout
 		$AnimationPlayer.play("pick_up")
 		await  get_tree().create_timer(1.9).timeout
-		
 		$CanvasLayer.visible = false
 		$CanvasLayer/Button.disabled = true
 	shakes+=1
@@ -58,4 +58,5 @@ func _on_button_pressed() -> void:
 	start_shake()
 	$CanvasLayer/Button.disabled = true
 func pick_up_item():
-	$CanvasLayer/Picable.show()
+	Global.croses+=5
+	Global.emit_signal("change_text")

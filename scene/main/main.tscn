@@ -50,7 +50,6 @@ light_mask = 0
 position = Vector2(88, 32)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
 position = Vector2(1888, 816)
 scale = Vector2(67, 35.5)
 energy = 0.9

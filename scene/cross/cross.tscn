@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2slkfrneakvl"]
 
-[ext_resource type="Texture2D" uid="uid://1k72bvxx75lf" path="res://sprite/1.png" id="1_6sj74"]
 [ext_resource type="Script" uid="uid://pmmnuw7falen" path="res://scene/cross/cross.gd" id="1_xd1lj"]
+[ext_resource type="Texture2D" uid="uid://b0mej2qtx5l0r" path="res://sprite/cross.png" id="2_xd1lj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xd1lj"]
 
@@ -14,7 +14,6 @@ script = ExtResource("1_xd1lj")
 shape = SubResource("CircleShape2D_xd1lj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.037, 0.037)
-texture = ExtResource("1_6sj74")
+texture = ExtResource("2_xd1lj")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

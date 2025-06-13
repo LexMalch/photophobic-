@@ -4,11 +4,13 @@ var cross_scene = preload("res://scene/cross/cross.tscn")
 func _ready() -> void:
 	Global.change_shiza.connect(_local_change_shiza)
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("mb"):
+	if Input.is_action_just_pressed("mb") and Global.croses > 0:
 		var cross = cross_scene.instantiate()
 		cross.cross_dir = global_position.direction_to(get_global_mouse_position())
 		cross.position = global_position
 		get_parent().add_child(cross)
+		Global.croses -=1
+		Global.emit_signal("change_text")
 	movement()
 	$Flashlight.look_at(get_global_mouse_position())
 func movement():
