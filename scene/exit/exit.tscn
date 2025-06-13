@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://buptwckyi4fm7" path="res://scene/lock/lock.tscn" id="3_ptgwl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xb6ya"]
-radius = 48.1664
+radius = 24.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qhter"]
 shader = ExtResource("3_lniwy")
