@@ -32,8 +32,8 @@ func _physics_process(delta: float) -> void:
 		
 	if Input.is_action_just_released("mb"):  # отпускание кнопки
 		if curcode == needcode:
-			get_parent().right_password()
-			queue_free()
+			get_parent().get_parent().right_password()
+			get_parent().queue_free()
 		mouse_pressed = false
 		over = []
 		curcode = []

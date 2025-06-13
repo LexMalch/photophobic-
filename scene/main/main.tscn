@@ -40,6 +40,7 @@ scale_curve = SubResource("CurveTexture_siuy0")
 alpha_curve = SubResource("CurveTexture_a0c6e")
 
 [node name="main" type="Node2D"]
+scale = Vector2(1.00431, 1)
 script = ExtResource("1_6vuhr")
 
 [node name="lvl1" parent="." instance=ExtResource("1_0imob")]
