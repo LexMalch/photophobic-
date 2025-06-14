@@ -39,15 +39,14 @@ func _on_seek_timer_timeout():
 func _on_seek_area_body_entered(body):
 	if body.is_in_group("player"):
 		$seek_timer.stop()
+		velocity = dir * chase_speed
 		player_body = body
 		$Chase_timer.start()
-		velocity = dir * chase_speed
 		
 func _on_seek_area_body_exited(body):
 	player_body = null
 	$Chase_timer.stop()
 	$seek_timer.start()
-	velocity = dir * seek_speed
 
 func _on_chase_timer_timeout():
 	dir = (player_body.position - position).normalized()
