@@ -2,12 +2,15 @@ extends Node2D
 var shakes_total:int
 var shakes: = 0
 var original_position 
+var player
 func _ready() -> void:
 	$CanvasLayer.visible = false
 	shakes_total = randf_range(3,6)
 	original_position = $CanvasLayer/Sprite2D.position
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
+		player = body
+		player.change_state("search")
 		if shakes< shakes_total:
 			$CanvasLayer.visible = true
 			$AnimationPlayer.play("on_player")
@@ -16,6 +19,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player") and shakes <= shakes_total:
+		player.change_state("deffault")
 		$AnimationPlayer.play_backwards("on_player")
 		await  get_tree().create_timer(0.5).timeout
 		$CanvasLayer.visible = false
@@ -52,6 +56,7 @@ func start_shake():
 		await  get_tree().create_timer(1.9).timeout
 		$CanvasLayer.visible = false
 		$CanvasLayer/Button.disabled = true
+		player.change_state("deffault")
 	shakes+=1
 
 func _on_button_pressed() -> void:

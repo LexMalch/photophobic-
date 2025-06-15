@@ -1,10 +1,13 @@
 extends CharacterBody2D
+enum State {DEFFAULT, SEARCH}
+var current_state = State.DEFFAULT
 var speed = 100
 var cross_scene = preload("res://scene/cross/cross.tscn")
 func _ready() -> void:
+	
 	Global.change_shiza.connect(_local_change_shiza)
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("mb") and Global.croses > 0:
+	if Input.is_action_just_pressed("mb") and Global.croses > 0 and current_state == State.DEFFAULT:
 		var cross = cross_scene.instantiate()
 		cross.cross_dir = global_position.direction_to(get_global_mouse_position())
 		cross.position = global_position
@@ -18,7 +21,15 @@ func movement():
 	move_and_slide()
 
 func _local_change_shiza():
-	if $PointLight2D.visible == true:
-		$PointLight2D.hide()
+	if $Flashlight/PointLight2D.visible == true:
+		$Flashlight/PointLight2D.hide()
 	else:
-		$PointLight2D.show()
+		$Flashlight/PointLight2D.show()
+func change_state(state):
+	match state:
+		"search":
+			current_state = State.SEARCH
+		"deffault":
+			current_state = State.DEFFAULT
+			
+	

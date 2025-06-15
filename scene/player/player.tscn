@@ -101,6 +101,7 @@ autoplay = "idle"
 position = Vector2(0, 10)
 
 [node name="PointLight2D" type="PointLight2D" parent="Flashlight"]
+visible = false
 rotation = -1.57079
 energy = 0.5
 shadow_enabled = true
@@ -117,6 +118,7 @@ debug_color = Color(0.846102, 0.326707, 0.496082, 0.42)
 
 [node name="frenzy_time" type="Timer" parent="." groups=["player"]]
 wait_time = 10.0
+autostart = true
 script = ExtResource("4_5lop3")
 
 [node name="Hitbox" type="Area2D" parent="."]
