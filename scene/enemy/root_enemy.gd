@@ -22,16 +22,26 @@ var current_state = State.SEEK
 func  _physics_process(delta: float) -> void:
 	match current_state:
 		State.SEEK:
+			$AnimationPlayer.speed_scale =0.3
+			
 			move()
-			print(dir.x)
+			
 		State.CHASE:
+			$AnimationPlayer.speed_scale =0.7
+			
 			velocity = dir * chase_speed
 			move_and_slide()
+			if dir.x > 0:
+				$Sprite2D.flip_h = true
+			else:
+				$Sprite2D.flip_h = false
 		State.ATTACK:
 			pass
-			
+	
+
 func move():
 	velocity = dir * seek_speed
+	$AnimationPlayer.play("move")
 	if dir.x > 0:
 		$Sprite2D.flip_h = true
 	else:

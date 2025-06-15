@@ -17,7 +17,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	player.change_state("deffault")
+	if body.is_in_group("player"):
+		player.change_state("deffault")
 	
 	if body.is_in_group("player") and $Sprite2D.texture != opend_text:
 		$CanvasLayer/lock/AnimationPlayer.play_backwards("ready")

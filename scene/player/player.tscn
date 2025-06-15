@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://j7a0fbbu1qxx"]
+[gd_scene load_steps=32 format=3 uid="uid://j7a0fbbu1qxx"]
 
 [ext_resource type="Script" uid="uid://dva87eg2b6g15" path="res://scene/player/player.gd" id="1_cm2cf"]
 [ext_resource type="Texture2D" uid="uid://1k72bvxx75lf" path="res://sprite/1.png" id="2_6smn3"]
@@ -156,15 +156,55 @@ radius = 7.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ajqqa"]
 radius = 7.07107
 
+[sub_resource type="Animation" id="Animation_732fb"]
+resource_name = "player_move"
+length = 0.34
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.17, 0.333333),
+"transitions": PackedFloat32Array(1.68179, 1.56917, 1),
+"update": 0,
+"values": [-0.0785398, 0.0785398, -0.0785398]
+}
+
+[sub_resource type="Animation" id="Animation_hfhxk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pisg7"]
+_data = {
+&"RESET": SubResource("Animation_hfhxk"),
+&"player_move": SubResource("Animation_732fb")
+}
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 disable_mode = 2
 script = ExtResource("1_cm2cf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_as_relative = false
+position = Vector2(0, 7)
 sprite_frames = SubResource("SpriteFrames_cm2cf")
 animation = &"idle"
 autoplay = "idle"
+offset = Vector2(0, -7)
 
 [node name="Flashlight" type="Node2D" parent="."]
 position = Vector2(0, 10)
@@ -186,7 +226,7 @@ shape = SubResource("CircleShape2D_5lop3")
 debug_color = Color(0.846102, 0.326707, 0.496082, 0.42)
 
 [node name="frenzy_time" type="Timer" parent="." groups=["player"]]
-wait_time = 10.0
+wait_time = 30.0
 autostart = true
 script = ExtResource("4_5lop3")
 
@@ -220,5 +260,11 @@ stretch_mode = 2
 layout_mode = 2
 text = "0"
 script = ExtResource("6_rkmeh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pisg7")
+}
+speed_scale = 0.639
 
 [connection signal="timeout" from="frenzy_time" to="frenzy_time" method="_on_timeout"]

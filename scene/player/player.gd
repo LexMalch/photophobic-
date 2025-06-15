@@ -14,12 +14,18 @@ func _physics_process(delta: float) -> void:
 		get_parent().add_child(cross)
 		Global.croses -=1
 		Global.emit_signal("change_text")
+	print(current_state)
 	movement()
 	$Flashlight.look_at(get_global_mouse_position())
+	
 func movement():
 	velocity = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")).normalized() * speed
 	move_and_slide()
-
+	if velocity!= Vector2(0,0):
+		$AnimationPlayer.play("player_move")
+	else:
+		$AnimationPlayer.play("RESET")
+		
 func _local_change_shiza():
 	if $Flashlight/PointLight2D.visible == true:
 		$Flashlight/PointLight2D.hide()
