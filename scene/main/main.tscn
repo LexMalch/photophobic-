@@ -64,3 +64,6 @@ randomness = 0.25
 visibility_rect = Rect2(-600, -600, 1200, 1200)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_b8g54")
+
+[editable path="lvl1"]
+[editable path="Player"]

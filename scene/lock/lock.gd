@@ -2,7 +2,7 @@ extends Node2D
 var firstPoint 
 var firstId
 var curcode = []
-var needcode = [0,1,2,4,6,7,8]
+var needcode = [2,4,6,7,8]
 
 var over = []
 var line = Line2D
