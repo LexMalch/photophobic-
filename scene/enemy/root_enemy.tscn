@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cnabwb5ge3v1" path="res://scene/enemy/sprite/base_enemy.png" id="2_kol4j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kol4j"]
+radius = 7.12871
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4460q"]
 radius = 143.797
@@ -13,11 +14,10 @@ radius = 14.0
 
 [node name="root_enemy" type="CharacterBody2D" groups=["root_enemy"]]
 scale = Vector2(1.829, 1.829)
-collision_layer = 2
 script = ExtResource("1_aiha7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 11)
+position = Vector2(1.90735e-06, 12.5752)
 shape = SubResource("CircleShape2D_kol4j")
 
 [node name="seek_area" type="Area2D" parent="."]

@@ -31,5 +31,5 @@ func change_state(state):
 			current_state = State.SEARCH
 		"deffault":
 			current_state = State.DEFFAULT
-			
+
 	
