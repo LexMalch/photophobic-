@@ -12,7 +12,6 @@ enum State{
 	CHASE,
 	SEEK,
 	ATTACK,
-	GETHIT
 	
 }
 
@@ -24,29 +23,37 @@ func  _physics_process(delta: float) -> void:
 	match current_state:
 		State.SEEK:
 			move()
+			print(dir.x)
 		State.CHASE:
-			pass
+			velocity = dir * chase_speed
+			move_and_slide()
 		State.ATTACK:
 			pass
 			
 func move():
 	velocity = dir * seek_speed
+	if dir.x > 0:
+		$Sprite2D.flip_h = true
+	else:
+		$Sprite2D.flip_h = false
 	move_and_slide()
 func _on_seek_timer_timeout():
 	dir = (Vector2(randf_range(-50, 50), randf_range(-50, 50))).normalized()
 	$seek_timer.start()
-	print(dir)
 func _on_seek_area_body_entered(body):
 	if body.is_in_group("player"):
+		current_state = State.CHASE
 		$seek_timer.stop()
-		velocity = dir * chase_speed
+		
 		player_body = body
 		$Chase_timer.start()
 		
 func _on_seek_area_body_exited(body):
-	player_body = null
-	$Chase_timer.stop()
-	$seek_timer.start()
+	if body.is_in_group("player"):
+		player_body = null
+		current_state = State.SEEK
+		$Chase_timer.stop()
+		$seek_timer.start()
 
 func _on_chase_timer_timeout():
 	dir = (player_body.position - position).normalized()

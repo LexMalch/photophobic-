@@ -1,17 +1,18 @@
 [gd_scene load_steps=6 format=3 uid="uid://cwjxgwknceu8e"]
 
 [ext_resource type="Script" uid="uid://dak2kgyftr0v1" path="res://scene/enemy/root_enemy.gd" id="1_aiha7"]
-[ext_resource type="Texture2D" uid="uid://cv5vib0v5e14j" path="res://scene/player/sprite/player1.png" id="2_kol4j"]
+[ext_resource type="Texture2D" uid="uid://cnabwb5ge3v1" path="res://scene/enemy/sprite/base_enemy.png" id="2_kol4j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kol4j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4460q"]
-radius = 75.0067
+radius = 143.797
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eicjn"]
 radius = 14.0
 
 [node name="root_enemy" type="CharacterBody2D" groups=["root_enemy"]]
+scale = Vector2(1.829, 1.829)
 collision_layer = 2
 script = ExtResource("1_aiha7")
 
@@ -41,7 +42,7 @@ shape = SubResource("CircleShape2D_eicjn")
 debug_color = Color(0.299725, 0.620002, 0.299821, 0.42)
 
 [node name="Chase_timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.2
 
 [connection signal="body_entered" from="seek_area" to="." method="_on_seek_area_body_entered"]
 [connection signal="body_exited" from="seek_area" to="." method="_on_seek_area_body_exited"]
